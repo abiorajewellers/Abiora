@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>ABIORA — Anti-Tarnish Jewelry</title>
+
+  <link rel="icon" href="images/abiora-logo.png?v=2" type="image/png">
+  <link rel="shortcut icon" href="images/abiora-logo.png?v=2" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <style>
+    /* Logo image */
+    .logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo small {
+  font-family: "Playfair Display", serif;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  margin-top: 2px;
+  display: block;
+  white-space: nowrap;
+}
+
+/*CART IMAGE ICON ========================== */ 
+.header-icons .cart-link { 
+  position: relative; 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 22px; 
+  height: 22px; 
+  text-decoration: none; 
+  } 
+  
+.header-icons .cart-link img { 
+  width: 21px; 
+  height: 21px; 
+  object-fit: contain; 
+  display: block; 
+} 
+.header-icons .cart-count { 
+  position: absolute; 
+  right: -9px; 
+  top: -8px;
+  background: #c28b43; 
+  color: #fff; 
+  border-radius: 20px; 
+  font-size: 8px; 
+  min-width: 15px; 
+  height: 15px; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 500; 
+  line-height: 1; } 
+  /* ========================= MOBILE ========================== */ 
+  @media (max-width: 520px) { 
+    .header-icons .cart-link { 
+      width: 20px; height: 20px; } 
+      .header-icons .cart-link img { 
+        width: 19px; height: 19px; } 
+        .header-icons .cart-count { 
+          right: -8px; top: -7px; } 
+          
+} 
+    
+  </style>
+</head>
+
+<body>
+
+<div id="announcement">Anti-Tarnish Jewellery <span>✦</span> Shop Now</div>
+
+<header class="header">
+
+  <a class="logo" href="index.html">
+    <img src="images/abiora-logo.png" alt="ABIORA">
+  </a>
+
+  <nav>
+    <a class="active" href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="care.html">Care</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="header-icons">
+    <a href="account.html" aria-label="Account">♙</a>
+    <a class="cart-link" href="cart.html">
+      <img src="images/cart.png" alt="Cart">
+      <b class="cart-count">0</b>
+    </a>
+  </div>
+
+</header>
+
+<div id="searchbar">
+  <input id="searchInput" placeholder="Search necklaces, rings, earrings..." oninput="liveSearch(this.value)">
+  <button onclick="toggleSearch()">×</button>
+  <div id="searchResults"></div>
+</div>
+
+
+<main>
+
+<section class="hero">
+
+  <div class="hero-copy">
+    <p class="eyebrow">ANTI-TARNISH JEWELRY</p>
+    <h1>Jewelry That<br>Stays Beautiful</h1>
+    <p class="lead">Timeless designs. Everyday wear.<br>Made to last.</p>
+    <a class="btn dark" href="shop.html">SHOP NOW <span>→</span></a>
+    <div class="slider">← &nbsp;—&nbsp; →</div>
+  </div>
+
+  <div class="hero-image" style="background-image:url('https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1400&q=85')"></div>
+
+</section>
+
+
+<section class="section categories">
+
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">EXPLORE</p>
+      <h2>Shop By Category</h2>
+      <p>Find your perfect piece.</p>
+    </div>
+  </div>
+
+  <div class="category-grid">
+
+    <a href="shop.html?cat=Necklaces">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=500&q=80')"></div>
+      <b>Necklaces</b>
+    </a>
+
+    <a href="shop.html?cat=Earrings">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=500&q=80')"></div>
+      <b>Earrings</b>
+    </a>
+
+    <a href="shop.html?cat=Rings">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=500&q=80')"></div>
+      <b>Rings</b>
+    </a>
+
+    <a href="shop.html?cat=Bracelets">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=500&q=80')"></div>
+      <b>Bracelets</b>
+    </a>
+
+    <a href="shop.html?cat=Chains">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=500&q=80')"></div>
+      <b>Chains</b>
+    </a>
+
+    <a href="shop.html?cat=Sets">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=500&q=80')"></div>
+      <b>Sets</b>
+    </a>
+
+  </div>
+
+</section>
+
+
+<section class="section sellers">
+
+  <div class="section-head inline">
+
+    <div>
+      <p class="eyebrow">CUSTOMER FAVOURITES</p>
+      <h2>Best Sellers</h2>
+      <p>Loved by you. Perfect for every occasion.</p>
+    </div>
+
+    <a href="shop.html">View All →</a>
+
+  </div>
+
+  <div id="homeProducts" class="product-grid"></div>
+
+</section>
+
+
+<section class="why">
+
+  <div class="why-inner">
+
+    <p class="eyebrow">THE ABIORA PROMISE</p>
+    <h2>Why Choose Abiora?</h2>
+
+    <div class="why-grid">
+
+      <div>
+        <span>♢</span>
+        <h3>Anti-Tarnish Coating</h3>
+        <p>Keeps your jewelry looking new for longer.</p>
+      </div>
+
+      <div>
+        <span>♡</span>
+        <h3>Premium Quality</h3>
+        <p>Thoughtfully crafted for everyday elegance.</p>
+      </div>
+
+      <div>
+        <span>♧</span>
+        <h3>Skin Friendly</h3>
+        <p>Comfort designed for everyday wear.</p>
+      </div>
+
+      <div>
+        <span>♙</span>
+        <h3>Elegant Designs</h3>
+        <p>Timeless pieces for every occasion.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section reviews">
+
+  <div class="section-head inline">
+
+    <div>
+      <p class="eyebrow">REAL PEOPLE. REAL LOVE.</p>
+      <h2>What Our Customers Say</h2>
+    </div>
+
+    <a href="#">View All →</a>
+
+  </div>
+
+  <div class="review-grid">
+
+    <article>
+      <div class="reviewer">
+        <div class="avatar">AS</div>
+        <div>
+          <b>Ananya S.</b>
+          <small>5 days ago</small>
+        </div>
+      </div>
+
+      <div class="stars">★★★★★</div>
+
+      <p>“Absolutely love the quality! I've been wearing it daily and it still looks brand new. No tarnish at all.”</p>
+    </article>
+
+
+    <article>
+
+      <div class="reviewer">
+
+        <div class="avatar">RK</div>
+
+        <div>
+          <b>Riya K.</b>
+          <small>1 week ago</small>
+        </div>
+
+      </div>
+
+      <div class="stars">★★★★★</div>
+
+      <p>“Beautiful designs and great service. The packaging was so aesthetic too! Will definitely shop again.”</p>
+
+    </article>
+
+
+    <article>
+
+      <div class="reviewer">
+
+        <div class="avatar">SN</div>
+
+        <div>
+          <b>Sneha M.</b>
+          <small>2 weeks ago</small>
+        </div>
+
+      </div>
+
+      <div class="stars">★★★★★</div>
+
+      <p>“Finally found jewelry that doesn't tarnish! Perfect for daily use. Looks so elegant and classy.”</p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<section class="newsletter">
+
+  <div>
+
+    <p class="eyebrow">STAY IN THE LOOP</p>
+    <h2>Be the First to Know</h2>
+    <p>Get exclusive offers, new arrivals and more.</p>
+
+  </div>
+
+  <form onsubmit="subscribe(event)">
+    <input type="email" required placeholder="Enter your email address">
+    <button class="btn gold">Subscribe</button>
+  </form>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="footer-brand">
+
+    <a class="logo" href="index.html">
+      <img src="images/abiora-logo.png" alt="ABIORA">
+      <small>ANTI-TARNISH JEWELRY</small>
+    </a>
+
+    <p>
+      Timeless jewelry for your everyday moments.
+    </p>
+
+  </div>
+
+
+  <div>
+
+    <h4>Quick Links</h4>
+
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About Us</a>
+    <a href="care.html">Care Guide</a>
+    <a href="contact.html">Contact</a>
+
+  </div>
+
+
+  <div>
+
+    <h4>Help</h4>
+
+    <a href="contact.html">
+      Shipping & Returns
+    </a>
+
+    <a href="contact.html">
+      FAQ
+    </a>
+
+    <a href="contact.html">
+      Track Order
+    </a>
+
+    <a href="#">
+      Terms & Conditions
+    </a>
+
+    <a href="#">
+      Privacy Policy
+    </a>
+
+  </div>
+
+
+  <div>
+
+    <h4>Follow Us</h4>
+
+    <p class="social">
+      ◎ &nbsp; f &nbsp; ◉ &nbsp; ▶
+    </p>
+
+  </div>
+
+
+  <div class="copyright">
+    © 2026 Abiora. All rights reserved.
+  </div>
+
+</footer>
+
+
+<div id="toast"></div>
+
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
+

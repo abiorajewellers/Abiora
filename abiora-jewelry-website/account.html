@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Login — ABIORA</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div id="announcement">
+
+    FREE SHIPPING ON ORDERS OVER ₹999
+
+    <span>✦</span>
+
+    7-DAY EASY RETURNS
+
+</div>
+
+
+<header class="header">
+
+    <a
+        class="logo"
+        href="index.html"
+    >
+
+        <span>✦</span>
+
+        ABIORA
+
+        <small>
+            ANTI-TARNISH JEWELRY
+        </small>
+
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="care.html">
+            Care
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <div class="header-icons">
+
+        <a
+            class="cart-link"
+            href="cart.html"
+        >
+
+            🛒
+
+            <b class="cart-count">
+                0
+            </b>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="account-page">
+
+    <div class="account-card">
+
+        <p class="eyebrow">
+            ADMIN ACCESS
+        </p>
+
+
+        <h1>
+            Admin Login
+        </h1>
+
+
+        <form id="adminLoginForm">
+
+            <input
+                id="adminEmail"
+                required
+                type="email"
+                placeholder="Email Address"
+                autocomplete="username"
+            >
+
+
+            <input
+                id="adminPassword"
+                required
+                type="password"
+                placeholder="Password"
+                autocomplete="current-password"
+            >
+
+
+            <button
+                type="submit"
+                class="btn dark wide"
+                id="loginButton"
+            >
+                Sign In
+            </button>
+
+        </form>
+
+
+        <p
+            id="loginError"
+            class="muted"
+            style="color:#b33;margin-top:15px;"
+        ></p>
+
+
+        <p class="muted">
+            Admin access only.
+        </p>
+
+    </div>
+
+</main>
+
+
+<script type="module">
+
+import {
+    auth,
+    db
+}
+from "./js/firebase.js";
+
+
+import {
+    signInWithEmailAndPassword,
+    setPersistence,
+    browserSessionPersistence,
+    signOut
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+
+import {
+    doc,
+    getDoc
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+const form =
+    document.getElementById("adminLoginForm");
+
+const error =
+    document.getElementById("loginError");
+
+const button =
+    document.getElementById("loginButton");
+
+
+let loginReady = false;
+
+
+/*
+    Prepare login.
+
+    IMPORTANT:
+    We intentionally use browserSessionPersistence.
+
+    This means:
+    - Opening account.html does NOT automatically login.
+    - Closing the browser/page removes the Firebase session.
+    - The user must enter email/password again.
+*/
+async function prepareLogin() {
+
+    try {
+
+        await setPersistence(
+            auth,
+            browserSessionPersistence
+        );
+
+
+        /*
+            If an old in-memory session exists,
+            remove it before displaying login.
+        */
+        if (auth.currentUser) {
+
+            await signOut(auth);
+
+        }
+
+
+        loginReady = true;
+
+    }
+
+    catch (err) {
+
+        console.error(
+            "LOGIN INITIALIZATION ERROR:",
+            err
+        );
+
+
+        error.textContent =
+            "Unable to initialize login. Please refresh the page.";
+
+    }
+
+}
+
+
+prepareLogin();
+
+
+form.addEventListener(
+    "submit",
+    async (event) => {
+
+        event.preventDefault();
+
+
+        if (!loginReady) {
+
+            error.textContent =
+                "Please wait a moment and try again.";
+
+            return;
+
+        }
+
+
+        error.textContent = "";
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "Signing In...";
+
+
+        const email =
+            document
+                .getElementById("adminEmail")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("adminPassword")
+                .value;
+
+
+        try {
+
+            await setPersistence(
+                auth,
+                browserSessionPersistence
+            );
+
+
+            const credential =
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+            const uid =
+                credential.user.uid;
+
+
+            const adminSnap =
+                await getDoc(
+                    doc(
+                        db,
+                        "admins",
+                        uid
+                    )
+                );
+
+
+            if (!adminSnap.exists()) {
+
+                await signOut(auth);
+
+                throw new Error(
+                    "This account is not registered as an administrator."
+                );
+
+            }
+
+
+            const adminData =
+                adminSnap.data();
+
+
+            if (
+                adminData.active !== true
+            ) {
+
+                await signOut(auth);
+
+                throw new Error(
+                    "This administrator account has been disabled."
+                );
+
+            }
+
+
+            window.location.replace(
+                "admin.html"
+            );
+
+        }
+
+        catch (err) {
+
+            console.error(
+                "LOGIN ERROR:",
+                err
+            );
+
+
+            let message =
+                "Unable to sign in.";
+
+
+            switch (err.code) {
+
+                case "auth/invalid-credential":
+
+                    message =
+                        "Invalid email or password.";
+
+                    break;
+
+
+                case "auth/invalid-email":
+
+                    message =
+                        "Please enter a valid email address.";
+
+                    break;
+
+
+                case "auth/user-not-found":
+
+                    message =
+                        "No account found with this email.";
+
+                    break;
+
+
+                case "auth/wrong-password":
+
+                    message =
+                        "Incorrect password.";
+
+                    break;
+
+
+                case "auth/too-many-requests":
+
+                    message =
+                        "Too many attempts. Please try again later.";
+
+                    break;
+
+
+                case "auth/network-request-failed":
+
+                    message =
+                        "Network error. Please check your internet connection.";
+
+                    break;
+
+
+                default:
+
+                    if (err.message) {
+
+                        message =
+                            err.message;
+
+                    }
+
+            }
+
+
+            error.textContent =
+                message;
+
+
+            button.disabled =
+                false;
+
+
+            button.textContent =
+                "Sign In";
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

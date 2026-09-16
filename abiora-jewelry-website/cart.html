@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Your Cart — ABIORA</title>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
+>
+
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
+
+<style>
+
+    /* ================================
+       ABIORA CART PAGE
+    ================================= */
+
+    .cart-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 30px 100px;
+    }
+
+    .cart-heading {
+        text-align: center;
+        margin-bottom: 55px;
+    }
+
+    .cart-heading .eyebrow {
+        margin-bottom: 12px;
+    }
+
+    .cart-heading h1 {
+        margin-bottom: 12px;
+    }
+
+    .cart-heading p {
+        color: #777;
+        font-size: 14px;
+    }
+
+    /* CART CONTENT */
+
+    .cart-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 370px;
+        gap: 55px;
+        align-items: start;
+    }
+
+    /* PRODUCTS */
+
+    .cart-products {
+        border-top: 1px solid #e5e0d7;
+    }
+
+    .cart-product {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: center;
+        padding: 25px 0;
+        border-bottom: 1px solid #e5e0d7;
+    }
+
+    .cart-product-image {
+        width: 120px;
+        height: 135px;
+        background: #f5f1e9;
+        overflow: hidden;
+    }
+
+    .cart-product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .cart-product-info {
+        min-width: 0;
+    }
+
+    .cart-product-info .category {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #999;
+        margin-bottom: 7px;
+    }
+
+    .cart-product-info h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0 0 9px;
+    }
+
+    .cart-product-price {
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+
+    .cart-product-price .old-price {
+        color: #999;
+        text-decoration: line-through;
+        margin-left: 7px;
+        font-size: 12px;
+    }
+
+    /* QUANTITY */
+
+    .cart-quantity {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid #d9d4cb;
+        height: 38px;
+    }
+
+    .cart-quantity button {
+        width: 38px;
+        height: 36px;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        font-size: 16px;
+        color: #222;
+        transition: background 0.2s ease;
+    }
+
+    .cart-quantity button:hover {
+        background: #f4f0e8;
+    }
+
+    .cart-quantity span {
+        width: 35px;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .cart-product-total {
+        text-align: right;
+        min-width: 90px;
+    }
+
+    .cart-product-total strong {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .remove-item {
+        display: block;
+        margin-top: 12px;
+        margin-left: auto;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        color: #999;
+        font-size: 11px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .remove-item:hover {
+        color: #222;
+    }
+
+    /* SUMMARY */
+
+    .cart-summary {
+        position: sticky;
+        top: 30px;
+        border: 1px solid #ded8ce;
+        padding: 30px;
+        background: #faf8f3;
+    }
+
+    .cart-summary h2 {
+        font-family: "Playfair Display", serif;
+        font-weight: 500;
+        font-size: 25px;
+        margin: 0 0 25px;
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+
+    .summary-row span:first-child {
+        color: #777;
+    }
+
+    .summary-total {
+        border-top: 1px solid #ddd7ce;
+        margin-top: 15px;
+        padding-top: 20px;
+    }
+
+    .summary-total span:first-child {
+        color: #222;
+        font-weight: 600;
+    }
+
+    .summary-total strong {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    /* FREE SHIPPING */
+
+    .shipping-progress {
+        margin: 20px 0 25px;
+        padding: 15px;
+        background: #f1ede5;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .shipping-progress strong {
+        font-weight: 600;
+    }
+
+    .progress-bar {
+        height: 4px;
+        background: #ddd7ce;
+        margin-top: 11px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 100%;
+        background: #1e1e1e;
+    }
+
+    /* CHECKOUT */
+
+    .checkout-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 52px;
+        margin-top: 25px;
+        background: #171717;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+        transition: all 0.25s ease;
+    }
+
+    .checkout-btn:hover {
+        background: #333;
+        transform: translateY(-1px);
+    }
+
+    .continue-shopping {
+        display: block;
+        text-align: center;
+        margin-top: 17px;
+        color: #555;
+        font-size: 12px;
+        text-decoration: underline;
+    }
+
+    /* TRUST */
+
+    .cart-trust {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 1px solid #ddd7ce;
+    }
+
+    .trust-item {
+        text-align: center;
+        font-size: 10px;
+        line-height: 1.4;
+        color: #777;
+    }
+
+    .trust-item span {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 6px;
+        color: #222;
+    }
+
+    /* EMPTY CART */
+
+    .empty-cart {
+        text-align: center;
+        padding: 100px 20px;
+        border-top: 1px solid #e5e0d7;
+        border-bottom: 1px solid #e5e0d7;
+    }
+
+    .empty-cart-icon {
+        width: 65px;
+        height: 65px;
+        margin: 0 auto 25px;
+        border: 1px solid #d8d2c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+    }
+
+    .empty-cart h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .empty-cart p {
+        color: #777;
+        font-size: 14px;
+        margin-bottom: 28px;
+    }
+
+    .shop-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 30px;
+        background: #171717;
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+    }
+
+    .logo { 
+            display: inline-flex; flex-direction: column;
+            align-items: flex-start; text-decoration: none;
+         } 
+         
+        .logo img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            display: block; 
+        } 
+        
+        .logo small {
+            font-family: "Playfair Display", serif; 
+            font-size: 8px; font-weight: 500;
+            letter-spacing: 1.2px; 
+            margin-top: 2px; 
+            display: block; 
+            white-space: nowrap;
+        }
+
+    /* Logo image */
+    .logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo small {
+  font-family: "Playfair Display", serif;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  margin-top: 2px;
+  display: block;
+  white-space: nowrap;
+}
+
+/*CART IMAGE ICON ========================== */ 
+.header-icons .cart-link { 
+  position: relative; 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 22px; 
+  height: 22px; 
+  text-decoration: none; 
+  } 
+  
+.header-icons .cart-link img { 
+  width: 21px; 
+  height: 21px; 
+  object-fit: contain; 
+  display: block; 
+} 
+.header-icons .cart-count { 
+  position: absolute; 
+  right: -9px; 
+  top: -8px;
+  background: #c28b43; 
+  color: #fff; 
+  border-radius: 20px; 
+  font-size: 8px; 
+  min-width: 15px; 
+  height: 15px; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 500; 
+  line-height: 1; } 
+
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+        .cart-page {
+            padding: 55px 20px 70px;
+        }
+
+        .cart-heading {
+            margin-bottom: 35px;
+        }
+
+        .cart-layout {
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+
+        .cart-summary {
+            position: static;
+        }
+
+    }
+
+    @media (max-width: 600px) {
+
+        .cart-page {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .cart-product {
+            grid-template-columns: 85px minmax(0, 1fr);
+            gap: 15px;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .cart-product-image {
+            width: 85px;
+            height: 100px;
+        }
+
+        .cart-product-info h3 {
+            font-size: 17px;
+            padding-right: 30px;
+        }
+
+        .cart-product-total {
+            grid-column: 2;
+            text-align: left;
+            margin-top: -4px;
+        }
+
+        .remove-item {
+            position: absolute;
+            right: 0;
+            top: 22px;
+        }
+
+        .cart-summary {
+            padding: 23px;
+        }
+
+        .cart-trust {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    
+    @media (max-width: 520px) { 
+    .header-icons .cart-link { 
+      width: 20px; height: 20px; } 
+      .header-icons .cart-link img { 
+        width: 19px; height: 19px; } 
+        .header-icons .cart-count { 
+          right: -8px; top: -7px; } 
+          
+} 
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+```
+<!-- ANNOUNCEMENT -->
+
+<div id="announcement">
+    Anti Tarnish Jewellery
+    <span>✦</span>
+    Shop Now
+</div>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <a class="logo" href="index.html"> 
+        <img src="images/abiora-logo.png" alt="ABIORA" > 
+     </a>
+
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="care.html">Care</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+
+    <div class="header-icons">
+
+        <a href="account.html">♙</a>
+
+        <a
+            class="cart-link"
+            href="cart.html"
+        >
+            🛒
+            <b class="cart-count">0</b>
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- CART -->
+
+<main class="cart-page">
+
+    <section class="cart-heading">
+
+        <p class="eyebrow">
+            YOUR SELECTION
+        </p>
+
+        <h1>
+            Your Cart
+        </h1>
+
+        <p>
+            Beautiful pieces, ready to be yours.
+        </p>
+
+    </section>
+
+
+    <!--
+        app.js will populate this container.
+        Your existing cart functionality can continue
+        using the cartContent ID.
+    -->
+
+    <div id="cartContent">
+
+        <!--
+            If your existing app.js dynamically creates
+            the cart, it will appear here.
+        -->
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-brand">
+
+        <a
+            class="logo"
+            href="index.html"
+        >
+            <img src="images/abiora-logo.png" alt="ABIORA">
+        </a>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            Quick Links
+        </h4>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="care.html">
+            Care
+        </a>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            Help
+        </h4>
+
+        <a href="contact.html">
+            Shipping & Returns
+        </a>
+
+        <a href="contact.html">
+            FAQ
+        </a>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Abiora.
+        All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<div id="toast"></div>
+
+
+<script src="js/app.js"></script>
+
+
+</body>
+
+</html>

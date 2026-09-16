@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Shop — ABIORA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body>
+<div id="announcement">Anti Tarnish Jewellery <span>✦</span> Shop Now</div><header class="header"><a class="logo" href="index.html"><img src="images/abiora-logo.png" alt="ABIORA">
+  </a></a><nav><a href="index.html">Home</a><a class="active" href="shop.html">Shop</a><a href="about.html">About</a><a href="care.html">Care</a><a href="contact.html">Contact</a></nav><div class="header-icons"><button onclick="toggleSearch()">⌕</button><a href="account.html">♙</a>🛒</a></div></header><div id="searchbar"><input id="searchInput" placeholder="Search jewelry..." oninput="liveSearch(this.value)"><button onclick="toggleSearch()">×</button><div id="searchResults"></div></div>
+<section class="page-hero shop-hero"><div><p class="eyebrow">ABIORA COLLECTION</p><h1>Shop All</h1><p>Timeless pieces. Endless possibilities.</p></div></section>
+<main class="shop-layout"><aside class="filters"><h3>Filter By</h3><div><b>Category</b><label><input type="checkbox" value="Necklaces" onchange="applyFilters()"> Necklaces</label><label><input type="checkbox" value="Earrings" onchange="applyFilters()"> Earrings</label><label><input type="checkbox" value="Rings" onchange="applyFilters()"> Rings</label><label><input type="checkbox" value="Bracelets" onchange="applyFilters()"> Bracelets</label><label><input type="checkbox" value="Chains" onchange="applyFilters()"> Chains</label><label><input type="checkbox" value="Sets" onchange="applyFilters()"> Sets</label></div><div><b>Price</b><label><input type="checkbox" value="0-800" onchange="applyFilters()"> Under ₹800</label><label><input type="checkbox" value="800-1200" onchange="applyFilters()"> ₹800 – ₹1,200</label><label><input type="checkbox" value="1200-1800" onchange="applyFilters()"> ₹1,200 – ₹1,800</label><label><input type="checkbox" value="1800-9999" onchange="applyFilters()"> Above ₹1,800</label></div><div><b>Material</b><label><input type="checkbox"> Stainless Steel</label><label><input type="checkbox"> 18K Gold Plated</label><label><input type="checkbox"> Silver</label></div><button class="clear" onclick="location.reload()">Clear All</button></aside>
+<section class="shop-results"><div class="shop-toolbar"><span id="resultCount">Showing products</span><select onchange="sortProducts(this.value)"><option value="featured">Sort by: Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select></div><div id="shopProducts" class="product-grid shop-grid"></div></section></main>
+<footer class="footer">
+
+<div class="footer-brand">
+
+<a class="logo" href="index.html">
+    <img src="images/abiora-logo.png" alt="ABIORA">
+  </a>
+
+<p>
+Timeless jewelry for your everyday moments.
+</p>
+
+</div>
+
+
+<div>
+
+<h4>Quick Links</h4>
+
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="about.html">About Us</a>
+<a href="care.html">Care Guide</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+
+<div>
+
+<h4>Help</h4>
+
+<a href="contact.html">
+Shipping & Returns
+</a>
+
+<a href="contact.html">
+FAQ
+</a>
+
+<a href="#">
+Track Order
+</a>
+
+<a href="#">
+Terms & Conditions
+</a>
+
+</div>
+
+
+<div>
+
+<h4>Follow Us</h4>
+
+<p class="social">
+◎ &nbsp; f &nbsp; ◉ &nbsp; ▶
+</p>
+
+</div>
+
+
+<div class="copyright">
+© 2026 Abiora. All rights reserved.
+</div>
+
+</footer>
+
+
+<div id="toast"></div>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>

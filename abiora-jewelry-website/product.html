@@ -1,0 +1,286 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Product — ABIORA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* ABIORA LOGO */
+
+/* Logo image */
+    .logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo small {
+  font-family: "Playfair Display", serif;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  margin-top: 2px;
+  display: block;
+  white-space: nowrap;
+}
+
+/*CART IMAGE ICON ========================== */ 
+.header-icons .cart-link { 
+  position: relative; 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 22px; 
+  height: 22px; 
+  text-decoration: none; 
+  } 
+  
+.header-icons .cart-link img { 
+  width: 21px; 
+  height: 21px; 
+  object-fit: contain; 
+  display: block; 
+} 
+.header-icons .cart-count { 
+  position: absolute; 
+  right: -9px; 
+  top: -8px;
+  background: #c28b43; 
+  color: #fff; 
+  border-radius: 20px; 
+  font-size: 8px; 
+  min-width: 15px; 
+  height: 15px; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 500; 
+  line-height: 1; } 
+  /* ========================= MOBILE ========================== */ 
+  @media (max-width: 520px) { 
+    .header-icons .cart-link { 
+      width: 20px; height: 20px; } 
+      .header-icons .cart-link img { 
+        width: 19px; height: 19px; } 
+        .header-icons .cart-count { 
+          right: -8px; top: -7px; } 
+          
+} 
+
+</style>
+
+</head>
+
+<body>
+
+<div id="announcement">
+  Anti Tarnish Jewellery <span>✦</span> Shop Now
+</div>
+
+
+<header class="header">
+
+  <a class="logo" href="index.html">
+
+    <img
+      src="images/abiora-logo.png"
+      alt="ABIORA"
+    >
+
+
+  </a>
+
+
+  <nav>
+
+    <a href="index.html">Home</a>
+
+    <a class="active" href="shop.html">Shop</a>
+
+    <a href="about.html">About</a>
+
+    <a href="care.html">Care</a>
+
+    <a href="contact.html">Contact</a>
+
+  </nav>
+
+
+  <div class="header-icons">
+
+    <button onclick="toggleSearch()">⌕</button>
+
+    <a href="account.html">♙</a>
+
+    <a class="cart-link" href="cart.html">
+      🛒<b class="cart-count">0</b>
+    </a>
+
+  </div>
+
+</header>
+
+
+<div id="searchbar">
+
+  <input
+    id="searchInput"
+    placeholder="Search jewelry..."
+    oninput="liveSearch(this.value)"
+  >
+
+  <button onclick="toggleSearch()">×</button>
+
+  <div id="searchResults"></div>
+
+</div>
+
+
+<main>
+
+  <div id="productDetail"></div>
+
+
+  <section class="section product-tabs">
+
+    <div class="tabs">
+
+      <button class="active">
+        Description
+      </button>
+
+      <button>
+        Material & Care
+      </button>
+
+      <button>
+        Shipping & Returns
+      </button>
+
+      <button>
+        Reviews
+      </button>
+
+    </div>
+
+
+    <div class="tab-copy">
+
+      <h3>
+        Designed for everyday elegance
+      </h3>
+
+      <p>
+        Each Abiora piece is thoughtfully designed with a protective finish for a beautiful look that lasts. Keep your piece dry, store it safely and follow our care guide for best results.
+      </p>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="footer">
+
+
+  <div class="footer-brand">
+
+    <a class="logo" href="index.html">
+
+      <img
+        src="images/abiora-logo.png"
+        alt="ABIORA"
+      >
+
+      <small>ANTI-TARNISH JEWELRY</small>
+
+    </a>
+
+  </div>
+
+
+  <div>
+
+    <h4>Quick Links</h4>
+
+    <a href="shop.html">
+      Shop
+    </a>
+
+    <a href="about.html">
+      About
+    </a>
+
+    <a href="care.html">
+      Care Guide
+    </a>
+
+  </div>
+
+
+  <div>
+
+    <h4>Help</h4>
+
+    <a href="contact.html">
+      Shipping & Returns
+    </a>
+
+    <a href="contact.html">
+      FAQ
+    </a>
+
+  </div>
+
+
+  <div>
+
+    <h4>Follow Us</h4>
+
+    <p class="social">
+      ◎ &nbsp; f &nbsp; ◉ &nbsp; ▶
+    </p>
+
+  </div>
+
+
+  <div class="copyright">
+    © 2026 Abiora. All rights reserved.
+  </div>
+
+</footer>
+
+
+<div id="toast"></div>
+
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
+```
