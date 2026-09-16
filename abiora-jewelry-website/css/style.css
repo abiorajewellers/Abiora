@@ -83,15 +83,28 @@
   font-weight: 500; 
   line-height: 1; } 
   /* ========================= MOBILE ========================== */ 
-  @media (max-width: 520px) { 
-    .header-icons .cart-link { 
-      width: 20px; height: 20px; } 
-      .header-icons .cart-link img { 
-        width: 19px; height: 19px; } 
-        .header-icons .cart-count { 
-          right: -8px; top: -7px; } 
-          
-} 
+  @media(max-width:900px){
+    .header{
+        padding:0 5%;
+        height:68px;
+    }
+
+    .header nav{
+        display:flex;
+        gap:14px;
+        font-size:10px;
+        overflow-x:auto;
+        white-space:nowrap;
+        scrollbar-width:none;
+    }
+
+    .header nav::-webkit-scrollbar{
+        display:none;
+    }
+
+    .header nav a{
+        padding:25px 0;
+    }
 
 }
-    
+}
