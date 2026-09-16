@@ -19,7 +19,7 @@ const PRODUCTS = [
         old: 999,
         rating: "4.9",
         reviews: 98,
-        img: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=700&q=85",
+        img: "https://unsplash.com/photos/a-pair-of-earrings-sitting-on-top-of-a-black-cloth--_12be3InkQ",
         desc: "Minimal twisted hoops for everyday styling.",
         material: "Stainless Steel"
     },
